@@ -30,6 +30,8 @@
         {
             this.txtWordFill = new System.Windows.Forms.Label();
             this.alphaPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.guessCount = new System.Windows.Forms.Label();
+            this.numGuesses = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtWordFill
@@ -49,16 +51,37 @@
             this.alphaPanel.Size = new System.Drawing.Size(622, 116);
             this.alphaPanel.TabIndex = 1;
             // 
+            // guessCount
+            // 
+            this.guessCount.AutoSize = true;
+            this.guessCount.Location = new System.Drawing.Point(12, 75);
+            this.guessCount.Name = "guessCount";
+            this.guessCount.Size = new System.Drawing.Size(104, 13);
+            this.guessCount.TabIndex = 2;
+            this.guessCount.Text = "Guesses Remaining:";
+            // 
+            // numGuesses
+            // 
+            this.numGuesses.AutoSize = true;
+            this.numGuesses.Location = new System.Drawing.Point(122, 75);
+            this.numGuesses.Name = "numGuesses";
+            this.numGuesses.Size = new System.Drawing.Size(13, 13);
+            this.numGuesses.TabIndex = 3;
+            this.numGuesses.Text = "5";
+            // 
             // GamePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.numGuesses);
+            this.Controls.Add(this.guessCount);
             this.Controls.Add(this.alphaPanel);
             this.Controls.Add(this.txtWordFill);
             this.Name = "GamePage";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -66,6 +89,8 @@
 
         private System.Windows.Forms.Label txtWordFill;
         private System.Windows.Forms.FlowLayoutPanel alphaPanel;
+        private System.Windows.Forms.Label guessCount;
+        private System.Windows.Forms.Label numGuesses;
     }
 }
 
