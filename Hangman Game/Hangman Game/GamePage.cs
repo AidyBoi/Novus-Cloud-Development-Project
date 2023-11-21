@@ -55,9 +55,40 @@ namespace Hangman_Game
             {
                 //update hangman image
                 numGuesses.Text = game.GuessesLeft.ToString();
-            }   
+            }
+
+            if (game.GuessesLeft == 0)
+            {
+                //game over
+                alphaPanel.Enabled = false;
+                MessageBox.Show("Game Over");
+            }
+            else if (!game.GetCurrentWordState().Contains('-'))
+            {
+                //game won
+                alphaPanel.Enabled = false;
+                MessageBox.Show("You Win!");
+            }
 
 
+        }
+        private void ToMenu_Click(object sender, EventArgs e)
+        {
+            //Navigate to menu page
+
+        }
+
+        private void ResetGame_Click(object sender, EventArgs e)
+        {
+            game = new GameManager();
+            alphaPanel.Enabled = true;
+            foreach (Button button in (alphaPanel.Controls))
+            {
+                button.Enabled = true;
+            }
+            txtWordFill.Text = game.GetCurrentWordState();
+            numGuesses.Text = game.GuessesLeft.ToString();
+            //Reset the hangman.
         }
     }
 }

@@ -16,13 +16,13 @@ namespace Hangman_Game
         {
             //initialize variables
             randomWord = GetRandomWord();
-            HideWord(randomWord);
+            hiddenWord = HideWord(randomWord);
             GuessesLeft = 5;
         }
 
         private string GetRandomWord()
         {
-            randomWord = "test";
+            randomWord = "test"; //to be replaced with actual random word selection.
             return randomWord.ToUpper();
         }
 
@@ -56,14 +56,19 @@ namespace Hangman_Game
         public void ResetGame()
         {
             //Reset game state and start new round
+            randomWord = GetRandomWord();
+            hiddenWord = HideWord(randomWord);
+            GuessesLeft = 5;
         }
 
-        private void HideWord(string randomWord)
+        private string HideWord(string randomWord)
         {
+            string hiddenWord = "";
             for (int i = 0; i < randomWord.Length; i++)
             {
-                hiddenWord += "_";
+                hiddenWord += "-";
             }
+            return hiddenWord;
         }
 
     }

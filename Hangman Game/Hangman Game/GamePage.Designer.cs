@@ -32,6 +32,8 @@
             this.alphaPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.guessCount = new System.Windows.Forms.Label();
             this.numGuesses = new System.Windows.Forms.Label();
+            this.resetGame = new System.Windows.Forms.Button();
+            this.toMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtWordFill
@@ -69,17 +71,39 @@
             this.numGuesses.TabIndex = 3;
             this.numGuesses.Text = "5";
             // 
+            // resetGame
+            // 
+            this.resetGame.Location = new System.Drawing.Point(713, 415);
+            this.resetGame.Name = "resetGame";
+            this.resetGame.Size = new System.Drawing.Size(75, 23);
+            this.resetGame.TabIndex = 4;
+            this.resetGame.Text = "Restart";
+            this.resetGame.UseVisualStyleBackColor = true;
+            this.resetGame.Click += new System.EventHandler(this.ResetGame_Click);
+            // 
+            // toMenu
+            // 
+            this.toMenu.Location = new System.Drawing.Point(632, 415);
+            this.toMenu.Name = "toMenu";
+            this.toMenu.Size = new System.Drawing.Size(75, 23);
+            this.toMenu.TabIndex = 5;
+            this.toMenu.Text = "Menu";
+            this.toMenu.UseVisualStyleBackColor = true;
+            this.toMenu.Click += new System.EventHandler(this.ToMenu_Click);
+            // 
             // GamePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.toMenu);
+            this.Controls.Add(this.resetGame);
             this.Controls.Add(this.numGuesses);
             this.Controls.Add(this.guessCount);
             this.Controls.Add(this.alphaPanel);
             this.Controls.Add(this.txtWordFill);
             this.Name = "GamePage";
-            this.Text = "Form1";
+            this.Text = "Hangman Game";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,6 +115,8 @@
         private System.Windows.Forms.FlowLayoutPanel alphaPanel;
         private System.Windows.Forms.Label guessCount;
         private System.Windows.Forms.Label numGuesses;
+        private System.Windows.Forms.Button resetGame;
+        private System.Windows.Forms.Button toMenu;
     }
 }
 
