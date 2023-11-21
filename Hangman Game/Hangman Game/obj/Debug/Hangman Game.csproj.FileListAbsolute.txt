@@ -1,0 +1,10 @@
+C:\Users\New-user\Desktop\Group Project\Hangman Game\Hangman Game\bin\Debug\Hangman Game.exe.config
+C:\Users\New-user\Desktop\Group Project\Hangman Game\Hangman Game\bin\Debug\Hangman Game.exe
+C:\Users\New-user\Desktop\Group Project\Hangman Game\Hangman Game\bin\Debug\Hangman Game.pdb
+C:\Users\New-user\Desktop\Group Project\Hangman Game\Hangman Game\obj\Debug\Hangman Game.csproj.AssemblyReference.cache
+C:\Users\New-user\Desktop\Group Project\Hangman Game\Hangman Game\obj\Debug\Hangman_Game.Properties.Resources.resources
+C:\Users\New-user\Desktop\Group Project\Hangman Game\Hangman Game\obj\Debug\Hangman Game.csproj.GenerateResource.cache
+C:\Users\New-user\Desktop\Group Project\Hangman Game\Hangman Game\obj\Debug\Hangman Game.csproj.CoreCompileInputs.cache
+C:\Users\New-user\Desktop\Group Project\Hangman Game\Hangman Game\obj\Debug\Hangman Game.exe
+C:\Users\New-user\Desktop\Group Project\Hangman Game\Hangman Game\obj\Debug\Hangman Game.pdb
+C:\Users\New-user\Desktop\Group Project\Hangman Game\Hangman Game\obj\Debug\Hangman_Game.GamePage.resources
