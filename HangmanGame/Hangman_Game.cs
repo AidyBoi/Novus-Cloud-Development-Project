@@ -24,7 +24,10 @@ namespace HangmanGame
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            GamePage gamePage = new GamePage();
+            this.Hide();
+            gamePage.ShowDialog();
+            this.Show();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -34,7 +37,10 @@ namespace HangmanGame
 
         private void AddWordsBtn_Click(object sender, EventArgs e)
         {
-
+            Form1 addWordsForm = new Form1();
+            this.Hide();
+            addWordsForm.ShowDialog();
+            this.Show();
         }
     }
 }
