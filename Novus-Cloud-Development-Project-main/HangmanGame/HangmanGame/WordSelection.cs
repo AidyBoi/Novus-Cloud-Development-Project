@@ -15,7 +15,8 @@ namespace Hangman_Game
 {
     public partial class WordSelection : Form
     {
-        public string filepath = $"C:\\Users\\amaanashiq\\Documents\\csharp\\miniProject\\Novus-Cloud-Development-Project-main\\HangmanGame\\HangmanGame\\WordList.txt";
+        
+        public string filepath = $"Resources/WordList.txt";
 
         public WordSelection()
         {
@@ -128,42 +129,29 @@ namespace Hangman_Game
         }
 
         private void UpdateTextFile(string removedWord)
-
         {
             try
-
             {
-                // Read text data from the file
-                string textData = File.ReadAllText(filepath);
+                // Read all lines from the file
+                string[] lines = File.ReadAllLines(filepath);
 
-                // Remove the word from the text data
-                textData = textData.Replace(removedWord, string.Empty);
+                // Remove the selected word from the array
+                lines = lines.Where(line => line != removedWord).ToArray();
 
-                // Write the modified text data back to the file
-                File.WriteAllText(filepath, textData);
+                // Write the modified content back to the file
+                File.WriteAllLines(filepath, lines);
             }
-
             catch (Exception ex)
             {
-
                 MessageBox.Show($"Error updating text file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
-        }
-
-
-
-
-
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
 
         }
 
-        
 
+
+        private void label1_Click(object sender, EventArgs e) { }
+       
   
     }
 }

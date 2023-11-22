@@ -118,7 +118,7 @@
     <None Include="Resources\0.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WordList.txt" />
+    <Content Include="Resources\WordList.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
