@@ -35,7 +35,15 @@ namespace Hangman_Game
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            // Create an instance of the new form
+            WordSelection anotherForm = new WordSelection();
 
+            // Show the new form
+            anotherForm.Show();
+
+            // Optionally, hide or close the current form
+            // this.Hide(); // or this.Close();
         }
     }
+    
 }

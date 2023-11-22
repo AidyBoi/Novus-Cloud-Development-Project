@@ -61,6 +61,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WordSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WordSelection.Designer.cs">
+      <DependentUpon>WordSelection.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Entrypoint.resx">
       <DependentUpon>Entrypoint.cs</DependentUpon>
     </EmbeddedResource>
@@ -71,6 +77,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WordSelection.resx">
+      <DependentUpon>WordSelection.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -107,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\WordList.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

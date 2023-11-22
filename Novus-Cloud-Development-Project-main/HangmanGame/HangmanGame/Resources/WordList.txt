@@ -1,4 +1,0 @@
-yellow
-red
-orange
-green

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Hangman_Game
 {
@@ -20,10 +22,41 @@ namespace Hangman_Game
             GuessesLeft = 5;
         }
 
+        private Random random = new Random();
+
+        public string filePath = "./Resources/WordList.txt";
+        
+        // path needs changing
+        
         private string GetRandomWord()
         {
-            randomWord = "test"; //to be replaced with actual random word selection.
-            return randomWord.ToUpper();
+            try
+            {
+                // Get the list of words from the file
+                string[] words = File.ReadAllLines(filePath);
+
+                // Check if there are any words in the file
+                if (words.Length > 0)
+                {
+                    // Generate a random index
+                    int randomIndex = random.Next(0, words.Length);
+
+                    // Get the random word
+                    string randomWord = words[randomIndex];
+
+                    return randomWord.ToUpper();
+                }
+                else
+                {
+                    MessageBox.Show("The text file is empty. Add words to get a random word.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error getting random word: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
         }
 
         public bool CheckGuess(char guessedLetter)
