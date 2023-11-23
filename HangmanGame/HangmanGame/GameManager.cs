@@ -10,8 +10,8 @@ namespace Hangman_Game
 {
     public class GameManager
     {
-        private string randomWord;
-        private string hiddenWord;
+        public string randomWord;
+        public string hiddenWord;
         public int GuessesLeft;
 
         public GameManager(string filePath)
