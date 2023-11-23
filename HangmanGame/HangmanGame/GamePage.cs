@@ -14,12 +14,12 @@ namespace Hangman_Game
     public partial class GamePage : Form
     {
         private GameManager game;
-        public GamePage()
+        public GamePage(string filePath)
         {
             InitializeComponent();
             InitialiseButtons();
 
-            game = new GameManager();
+            game = new GameManager(filePath);
 
             txtWordFill.Text = game.GetCurrentWordState();
         }
@@ -51,6 +51,8 @@ namespace Hangman_Game
 
         private void AlphaButton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(sender.ToString());
+
             Button clickedButton = sender as Button;
 
             clickedButton.Enabled = false;
@@ -82,7 +84,7 @@ namespace Hangman_Game
         private void ToMenu_Click(object sender, EventArgs e)
         {
             ResetGame();
-            Program.HideGame();
+            Program.HideAll();
             Program.ShowMenu();
         }
 
@@ -93,7 +95,7 @@ namespace Hangman_Game
 
         private void ResetGame()
         {
-            game = new GameManager();
+            game.ResetGame();
             button_grid.Enabled = true;
             foreach (Button button in (button_grid.Controls))
             {

@@ -8,25 +8,22 @@ using System.Windows.Forms;
 
 namespace Hangman_Game
 {
-    internal class GameManager
+    public class GameManager
     {
-        private string randomWord;
-        private string hiddenWord;
+        public string randomWord;
+        public string hiddenWord;
         public int GuessesLeft;
 
-        public GameManager()
+        public GameManager(string filePath)
         {
-            //initialize variables
-            randomWord = GetRandomWord();
-            hiddenWord = HideWord(randomWord);
-            GuessesLeft = 5;
+            this.filePath = filePath;
+
+            ResetGame();
         }
 
         private Random random = new Random();
 
-        public string filePath = "./Resources/WordList.txt";
-        
-        // path needs changing
+        public string filePath;
         
         private string GetRandomWord()
         {
