@@ -16,26 +16,31 @@ namespace Hangman_Game
     public partial class WordSelection : Form
     {
         
-        public const string filePath = "./Resources/WordList.txt";
+        private string filePath;
 
-        public WordSelection()
+        public WordSelection(string filePath)
         {
             InitializeComponent();
+
+            this.filePath = filePath;
 
             LoadWordsFromFile();
 
             listView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
+        public void ReloadWordlist()
+        {
+            LoadWordsFromFile();
+        }
+
         private void LoadWordsFromFile()
         {
             try
             {
-                // Read text data from the file
-                string textData = File.ReadAllText(filePath);
+                string[] words = GetUniqueWordsFromList(GetWordsFromFile(this.filePath));
 
-                // Split the text into words
-                string[] words = textData.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+                listView2.Items.Clear();
 
                 // Add words to the ListView
                 foreach (string word in words)
@@ -47,6 +52,29 @@ namespace Hangman_Game
             {
                 MessageBox.Show($"Error loading words: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private string[] GetWordsFromFile(string filePath)
+        {
+            return File.ReadAllText(filePath).Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        private string[] GetUniqueWordsFromList(string[] words)
+        {
+            Dictionary<string, string> uniqueWords = new Dictionary<string, string>();
+            foreach (string word in words)
+            {
+                if (!uniqueWords.ContainsKey(word.ToUpper()))
+                {
+                    uniqueWords.Add(word.ToUpper(), word);
+                }
+            }
+            List<string> result = new List<string>();
+            foreach (KeyValuePair<string,string> pair in uniqueWords)
+            {
+                result.Add(pair.Value);
+            }
+            return result.ToArray();    
         }
 
         private void WordsListView_MouseClick(object sender, MouseEventArgs e)
@@ -110,6 +138,8 @@ namespace Hangman_Game
         {
             try
             {
+                // If word is already in list do not add
+                if (GetWordsFromFile(this.filePath).Contains(newWord)) { return; }
                 // Append the new word to the text file with a newline character
                 File.AppendAllText(filePath, $"{newWord}\n");
             }
@@ -123,14 +153,20 @@ namespace Hangman_Game
         {
             try
             {
-                // Read all lines from the file
-                string[] lines = File.ReadAllLines(filePath);
+                // Read all word from the file
+                string[] words = GetWordsFromFile(this.filePath);
+                StringBuilder sb = new StringBuilder();
 
                 // Remove the selected word from the array
-                lines = lines.Where(line => line != removedWord).ToArray();
+                words = words.Where(word => word != removedWord).ToArray();
+                
+                foreach (string word in GetUniqueWordsFromList(words))
+                {
+                    sb.AppendLine(word);
+                }
 
                 // Write the modified content back to the file
-                File.WriteAllLines(filePath, lines);
+                File.WriteAllText(filePath, sb.ToString());
             }
             catch (Exception ex)
             {
@@ -151,6 +187,39 @@ namespace Hangman_Game
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WordSelection_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toMenu_Click(object sender, EventArgs e)
+        {
+            Program.HideAll();
+            Program.ShowMenu();
+        }
+
+        private void resetWordlist_Click(object sender, EventArgs e)
+        {
+            // HARDCODED DEFAULT WORDS FILE
+            listView2.Items.Clear();
+            string[] words = GetUniqueWordsFromList(GetWordsFromFile("./Resources/DefaultWordlist.txt"));
+            StringBuilder sb = new StringBuilder();
+
+            // Add words to the ListView
+            foreach (string word in words)
+            {
+                listView2.Items.Add(word);
+                sb.AppendLine(word);
+            }
+
+            File.WriteAllText(filePath, sb.ToString());
         }
     }
 }

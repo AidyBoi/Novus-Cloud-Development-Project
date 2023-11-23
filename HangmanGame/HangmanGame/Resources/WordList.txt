@@ -1,5 +1,1 @@
-Hello
-Blue
-elephant
-yellow
-red
+hello hello yellow green red blue
